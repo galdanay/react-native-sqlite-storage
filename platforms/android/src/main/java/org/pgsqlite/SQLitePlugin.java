@@ -353,34 +353,34 @@ public class SQLitePlugin extends ReactContextBaseJavaModule {
                     assetFilePath = "www/" + dbname;
                     try {
                         in = this.getContext().getAssets().open(assetFilePath);
-                        FLog.v(TAG, "Pre-populated DB asset FOUND  in app bundle www subdirectory: " + assetFilePath);
+                        FLog.v(TAG, "11 a Pre-populated DB asset FOUND  in app bundle www subdirectory: " + assetFilePath);
                     } catch (Exception ex){
                         assetImportError = true;
-                        FLog.e(TAG, "pre-populated DB asset NOT FOUND in app bundle www subdirectory: " + assetFilePath);
+                        FLog.e(TAG, "11 b pre-populated DB asset NOT FOUND in app bundle www subdirectory: " + assetFilePath);
                     }
                 } else if (assetFilePath.charAt(0) == '~') {
                     assetFilePath = assetFilePath.startsWith("~/") ? assetFilePath.substring(2) : assetFilePath.substring(1);
                     try {
                         in = this.getContext().getAssets().open(assetFilePath);
-                        FLog.v(TAG, "Pre-populated DB asset FOUND in app bundle subdirectory: " + assetFilePath);
+                        FLog.v(TAG, "11 cPre-populated DB asset FOUND in app bundle subdirectory: " + assetFilePath);
                     } catch (Exception ex){
                         assetImportError = true;
-                        FLog.e(TAG, "pre-populated DB asset NOT FOUND in app bundle www subdirectory: " + assetFilePath);
+                        FLog.e(TAG, "11 d pre-populated DB asset NOT FOUND in app bundle www subdirectory: " + assetFilePath);
                     }
                 } else {
                     File filesDir = this.getContext().getFilesDir();
                     assetFilePath = assetFilePath.startsWith("/") ? assetFilePath.substring(1) : assetFilePath;
                     try {
-                        File assetFile = new File(filesDir, assetFilePath);
+                        File assetFile = new File(assetFilePath);
                         in = new FileInputStream(assetFile);
-                        FLog.v(TAG, "Pre-populated DB asset FOUND in Files subdirectory: " + assetFile.getCanonicalPath());
+                        FLog.v(TAG, "11 e Pre-populated DB asset FOUND in Files subdirectory: " + assetFile.getCanonicalPath());
                         if (openFlags == SQLiteDatabase.OPEN_READONLY) {
                             dbfile = assetFile;
-                            FLog.v(TAG, "Detected read-only mode request for external asset.");
+                            FLog.v(TAG, "11 f Detected read-only mode request for external asset.");
                         }
                     } catch (Exception ex){
                         assetImportError = true;
-                        FLog.e(TAG, "Error opening pre-populated DB asset in app bundle www subdirectory: " + assetFilePath);
+                        FLog.e(TAG, " 11 g Error opening pre-populated DB asset in app bundle www subdirectory: " + assetFilePath);
                     }
                 }
             }
